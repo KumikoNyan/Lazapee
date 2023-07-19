@@ -1,0 +1,84 @@
+{% extends 'payroll_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Font Awesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Custom CSS -->
+<style>
+    body {
+        background-color: white;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .section {
+        margin: 30px 0;
+    }
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+    }
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+    .card-body {
+        padding: 30px;
+    }
+    .footer {
+        margin-top: 50px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="section">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h1>About Us</h1>
+                <p style="text-align: justify;">We are a team of three BS Management Information Systems students from Ateneo De Manila University. This page is part of our final project for our MSYS course.
+        
+                    As MIS students, we are passionate about using technology to solve real-world business problems. For our final project, we decided to develop a web-based system that helps small business owners manage their employees and payrolls. Our goal is to create an easy-to-use platform that allows small business owners to streamline their operations and make data-driven decisions.
+                    
+                    Throughout the development process, we have leveraged the skills and knowledge we have gained in our MIS classes, including database design, web development, and project management. We have also collaborated closely as a team to ensure that our system meets the needs of small business owners and provides a seamless user experience.
+                    
+                    Thank you for visiting our page, and we hope you find our project informative and useful. If you have any questions or feedback, please don't hesitate to contact us.</p>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Statements and Extra Stuff -->
+<section class="section">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2>Team Members</h2>
+                <p><b>Duncan Xenos Ling</b></p>
+                <p style="text-align: justify;">A project lead for a web-based system is responsible for overseeing the development and implementation of a web-based platform. This person serves as the main point of contact between the development team, clients, and stakeholders, ensuring that project goals and requirements are met.</p>
+                </p>
+                <p><b>Daniel Perez</b></p>
+                <p style="text-align: justify;">The lead developer for the web-based system. This person has a deep understanding of web development technologies and frameworks, they have played a key role in designing, developing, and testing the system from the ground up.</p>
+                </p>
+                <p><b>Maverick Cruz</b></p>
+                <p style="text-align: justify;">The lead planner for the web-based system who is responsible for overseeing the entire planning process of the project. This person has a deep understanding of project management methodologies and industry best practices. They also work closely with stakeholders to identify project objectives, define project scope, and develop a detailed project plan.</p>
+                </p>
+            </div>
+        </div>
+    </div>
+
+<section class="section">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                    <h2>Mission Statement</h2>
+                    <p style="text-align: justify;">Our mission as developers is to create innovative, reliable, and user-friendly software solutions that meet the needs of our clients and end-users. We are committed to continuous learning and growth, staying up-to-date with the latest technologies and industry best practices.</p>
+                    </p>
+                    </p>
+                </div>
+            </div>
+        </div>
+{% endblock %}

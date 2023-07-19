@@ -1,0 +1,47 @@
+{% extends 'payroll_app/base.html' %}
+{% load static %}
+
+ 
+{% block content %}
+<div class = "row">
+    <div class = "col"> <h2> Employees</h2></div>
+    <div class = "col text-right"> <a href="{% url 'add_employee' %}" class="btn btn-primary"> Add employee</a></div> 
+</div>
+    <div class="row">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <th scope="col"> Name </th>
+                <th scope="col"> ID Number </th>
+                <th scope="col"> Rate </th>
+                <th scope="col"> Allowance </th>
+                <th scope="col"> Overtime </th>
+                <th scope="col"> Options </th>
+            </thead>
+            <tbody>
+                {% for x in employees %}
+                <tr>
+                    <td> {{ x.name }} </td>
+                    <td> {{ x.id_number }} </td>
+                    <td> {{ x.rate }} </td>
+                    <td> {{ x.allowance }} </td>
+                    <td> {{ x.overtime_pay }} </td>
+                    <td>
+                        <div class="row justify-content-center mb-1">
+                            <a href="{% url 'update_employee' id_number=x.id_number %}" class="btn btn-dark mr-1" style="width:80px;">Update</a>
+                            <a href="{% url 'delete_employee' id_number=x.id_number %}" class="btn btn-danger" style="width:80px;">Delete</a> 
+                        </div>
+                        <form method="POST" action="{% url 'add_overtime' id_number=x.id_number %}">
+                            {% csrf_token %}
+                        <div class="row justify-content-center">
+                            <input type="number" class="form-control" id="overtime" name="overtime" style="width:140px;margin-right:5px;">
+                            <button type="submit" class="btn btn-success" style="width:140px;">Add Overtime</button>
+                        </div>
+                    </form>
+                    </td>
+                   
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% extends 'payroll_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<form method="POST" action="{% url 'update_employee' id_number=x.id_number %}">{% csrf_token %}
+    <div class="container" style="justify-content:center;display:flex;">
+        <div class="card" style="width:450px;">
+            <div class="card-header"> <h2> Create Employee </h2></div>
+            <div class="card-body">
+                <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{x.name}}">
+                </div>
+                <div class="form-group">
+                <label for="id_number">ID Number</label>
+                <input type="text" class="form-control" id="id_number" name="id_number" value="{{x.id_number}}">
+                </div>
+                <div class="form-group">
+                <label for="rate">Rate</label>
+                <input type="number" class="form-control" id="rate" name="rate" value="{{x.rate}}">
+                </div>
+                <div class="form-group">
+                <label for="allowance">Allowance</label>
+                <input type="number" class="form-control" id="allowance" name="allowance" value="{{x.allowance}}">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{% url 'employees' %}"  class="btn btn-dark">Back</a>
+            </div>
+        </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

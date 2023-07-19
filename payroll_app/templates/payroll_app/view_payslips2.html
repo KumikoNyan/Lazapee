@@ -1,0 +1,85 @@
+{% extends 'payroll_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-between">
+        <p>Name: {{d.id_number.name}}</p>
+        <p>ID Number: {{d.id_number.id_number}}6</p>
+        <p>DATE: {{d.getDate}}</p>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Earnings</h5>
+            <table class="table" style="table-layout:fixed">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Base Pay</td>
+                        <td>{{d.getCycleRate}}</td>
+                    </tr>
+                    <tr>
+                        <td>Allowance</td>
+                        <td>{{d.earnings_allowance}}</td>
+                    </tr>
+                    <tr>
+                        <td>Overtime</td>
+                        <td>{{d.overtime}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GROSS PAY</strong></td>
+                        <td><strong>PHP {{d.getGross_pay}}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <h5>Deductions</h5>
+            <table class="table" style="table-layout:fixed">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>W/HOLDING TAX</td>
+                        <td>{{d.deductions_tax}}</td>
+                    </tr>
+                    <tr>
+                        <td>PHILHEALTH</td>
+                        <td>{{d.deductions_health}}</td>
+                    </tr>
+                    <tr>
+                        <td>SSS</td>
+                        <td>{{d.sss}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TOTAL DEDUCTIONS</strong></td>
+                        <td><strong>PHP{{d.getGross_deductions}}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <div class="row justify-content-between mb-5">
+        <div class="col-6">
+        <h5><b>NET PAY:</b></h5>
+        </div>
+        <div class="col-6"><b>PHP {{d.total_pay}}</b></div>
+    </div>
+    <div style="text-align: center;">
+        <a class="btn btn-dark btn-md mr-2" href="{% url 'payslips' %}">Back</button>
+    </div>
+</div>
+{% endblock %}

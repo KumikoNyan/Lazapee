@@ -1,0 +1,94 @@
+{% extends 'payroll_app/base.html' %}
+{% load static %}
+
+ 
+{% block content %}
+{% for message in messages %}
+    <div class="alert alert-danger {{ message.tags }}" style="color:red">
+    {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+    </div>
+{% endfor %}
+<div class = "row">
+    <div class = "col"> <h2>Payroll Creation</h2></div>
+</div>
+    <div class="row">
+        <div class="container" style="background-color:#f6f6f6;">
+            <form method="POST" action="{% url 'payslips' %}">{% csrf_token %}
+                <div class="row justify-content-center mt-3">
+                        <label for="employee" style="margin-right:40px;margin-top:5px;"> Payroll for: </label>
+                        <div class="col-3"> 
+                            <select class="form-control" id="employee" name='employee' placeholder="Employee">
+                            <option value="All"> All employees </option>
+                            {% for x in employees %}
+                            <option value="{{ x.id_number }}"> {{x.id_number}} </option>
+                            {% endfor %}
+                        </select> </div>
+                </div>
+                <hr>
+                <div class="row justify-content-center ml-3 mb-2">
+                    <div class="col">
+                        <label for="month"> Month: </label>
+                        <select class="form-control" id="month" name="month" style="width:300px;">
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="year"> Year: </label>
+                        <input type="text" class="form-control" id="year" name="year" style="width:300px;">
+                    </div>
+                    <div class="col">
+                        <label for="cycle"> Cycle: </label>
+                        <select class="form-control" id="cycle" name="cycle" style="width:300px;">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-2"> <button type="submit" class="btn btn-primary">Submit</button> </div>
+            </form>
+        </div>
+    </div>
+    &nbsp
+    &nbsp
+<div class="row">
+    <div class="col"><h2>Payslips Summary</h2></div>
+</div>
+    <div class="row">
+        <div class="container" style="background-color: white;">
+            <table class="table table-striped border">
+                <thead>
+                    <tr>
+                        <th class="table-dark" scope="col">ID Number</th>
+                        <th class="table-dark" scope="col">Date</th>
+                        <th class="table-dark" scope="col">Cycle</th>
+                        <th class="table-dark" scope="col">Total Pay</th>
+                        <th class="table-dark" scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in payslips %}
+                    <tr>
+                        <td>{{ d.id_number.id_number }}</td>
+                        <td>{{ d.month }} {{d.date_range}}, {{ d.year }}</td>
+                        <td>{{ d.pay_cycle }}</td>
+                        <td>{{ d.total_pay }}</td>
+                        <td><a class="btn btn-dark btn-md mr-2" href="{% url 'view_payslip' id=d.id_number.id_number month=d.month year=d.year cycle=d.pay_cycle %}">View</button> <a class="btn btn-danger" href="{% url 'delete_payslip' id=d.id_number.id_number month=d.month year=d.year cycle=d.pay_cycle %}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table> 
+        </div>
+    </div>
+{% endblock %}
+
