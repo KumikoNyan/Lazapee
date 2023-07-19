@@ -16,7 +16,7 @@ This simple project resembles a payroll feature for Lazada and Shopee.
 - Latest version of [miniconda](https://docs.conda.io/en/latest/miniconda.html)
   - Add this to your ```PATH```
 - Python packages
-  - ```django``
+  - ```django```
 - Optional: [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## Setup
