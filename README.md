@@ -23,7 +23,8 @@ This simple project resembles a payroll feature for Lazada and Shopee.
 1. Download all the required packages
 2. Load the project folder
 3. Make necessary edits to your liking
-4. Run the code
+4. Make Migrations
+5. Run the code
 
 by @KumikoNyan
 
