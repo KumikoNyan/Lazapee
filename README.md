@@ -10,7 +10,7 @@ This simple project resembles a payroll feature for Lazada and Shopee.
 - Payroll History & Details
   - Notifies if a payroll already exists for a certain employee
 - Tax (Subject to change depending on your country)
-- Simple and Minimalistic UI
+- Simple and Minimalistic UI (Bootstrap)
 
 ## Requirements
 - Latest version of [miniconda](https://docs.conda.io/en/latest/miniconda.html)
